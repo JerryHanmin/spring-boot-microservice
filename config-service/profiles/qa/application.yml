@@ -1,0 +1,26 @@
+server:
+  port: 19300
+  context-path: /config
+
+eureka:
+  instance:
+    hostname: localhost
+    appname: github-config-service
+    virtual-host-name: loving.github.config.service
+    metadataMap:
+      instanceId: ${spring.application.name}:${server.port}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/changTtai/loving.git
+          username: changTtai
+          password: changhongIT2015
+          searchPaths: wsapidoc,applications

@@ -1,0 +1,16 @@
+version = '1.0'
+jar {
+    baseName = 'sample-company-cassandra'+"$profile"
+    version = '0.1.0'
+}
+
+dependencies {
+    compile(
+            "org.springframework.boot:spring-boot-starter-data-rest",
+            "org.springframework.data:spring-cql:1.2.1.RELEASE",
+            'org.springframework.data:spring-data-cassandra:1.2.1.RELEASE'
+    )
+    testCompile(
+            "org.springframework.boot:spring-boot-starter-test"
+    )
+}

@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: kafka-consumer
+  cloud:
+    config:
+      uri: http://localhost:29300/config

@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: apps-demo2
+  profiles:
+    active: dev
+  cloud:
+    config:
+      uri: http://localhost:29300/config
+    failFast: true

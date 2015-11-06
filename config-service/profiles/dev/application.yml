@@ -1,0 +1,27 @@
+server:
+  port: 29300
+  context-path: /config
+
+eureka:
+  instance:
+    hostname: localhost
+    appname: github-config-service
+    preferIpAddress: true
+    virtual-host-name: loving.config.service
+    metadataMap:
+      instanceId: ${spring.application.name}:${server.port}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/discovery/eureka/
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/JerryHanmin/microservice-service-config.git
+          searchPaths: apps_config,wsapi_doc
+
+

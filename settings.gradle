@@ -1,0 +1,16 @@
+rootProject.name = 'loving-springcloud'
+include 'discovery-service'
+include 'config-service'
+include 'consul-service'
+include 'demo1-service'
+include 'demo2-service'
+
+include 'sample-ribbon-server'
+include 'sample-ribbon-client'
+
+include 'sample-kafka-consumer'
+include 'sample-kafka-producer'
+
+include 'sample-company-cassandra'
+include 'sample-company-es'
+

@@ -1,0 +1,19 @@
+version = '1.0'
+jar {
+    baseName = 'sample-kafka-consumer'+"-$profile"
+    version = '0.1.0'
+}
+
+dependencies {
+    compile(
+            "org.springframework.cloud:spring-cloud-starter-eureka",
+            "org.springframework.cloud:spring-cloud-starter-feign",
+            'com.google.code.gson:gson:2.3.1'
+    )
+    compile('org.apache.kafka:kafka_2.10:0.8.2.1'){
+        exclude group :"org.slf4j"
+    }
+    testCompile(
+            "org.springframework.boot:spring-boot-starter-test"
+    )
+}

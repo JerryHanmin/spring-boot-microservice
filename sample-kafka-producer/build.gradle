@@ -1,0 +1,19 @@
+version = '1.0'
+jar {
+    baseName = 'sample-kafka-producer'+"-$profile"
+    version = '0.1.0'
+}
+
+dependencies {
+    compile(
+            "org.springframework.cloud:spring-cloud-starter-eureka",
+            "org.springframework.cloud:spring-cloud-starter-feign",
+            "net.sf.json-lib:json-lib:2.4:jdk15"
+    )
+    compile('org.apache.kafka:kafka_2.10:0.8.2.1'){
+        exclude group :"org.slf4j"
+    }
+    testCompile(
+            "org.springframework.boot:spring-boot-starter-test"
+    )
+}

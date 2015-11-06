@@ -1,0 +1,15 @@
+version = '1.0'
+jar {
+    baseName = 'sample-company-es'+"$profile"
+    version = '0.1.0'
+}
+
+dependencies {
+    compile(
+            'org.springframework.boot:spring-boot-starter-data-elasticsearch:1.2.0.RELEASE',
+            "org.springframework.boot:spring-boot-starter-data-rest",
+    )
+    testCompile(
+            "org.springframework.boot:spring-boot-starter-test"
+    )
+}

@@ -1,4 +1,4 @@
-rootProject.name = 'loving-springcloud'
+rootProject.name = 'loving-springcloud-microservice-learning'
 include 'discovery-service'
 include 'config-service'
 include 'consul-service'

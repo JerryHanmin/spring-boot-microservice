@@ -13,23 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableDiscoveryClient
-@EnableFeignClients
 public class Demo1App {
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(Demo1App.class, args);
-	}
-
-	@Autowired
-	TestClient client;
-
-	public String demoTest() {
-		return client.demoTest();
-	}
-	@FeignClient("demo1service")
-	public interface TestClient {
-
-		@RequestMapping(method = RequestMethod.GET, value = "/test")
-		String demoTest();
-
 	}
 }

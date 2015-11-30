@@ -1,9 +1,14 @@
 spring:
   application:
     name: apps-demo1
-  profiles:
-    active: dev
   cloud:
     config:
-      uri: http://localhost:29300/config
+      uri: http://localhost:8888/config
     failFast: true
+server:
+  port: 9007
+app:
+  groupName: default-group
+  eureka:
+    hostname: localhost
+    port: 8761

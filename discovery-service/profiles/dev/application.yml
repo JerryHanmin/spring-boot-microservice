@@ -4,16 +4,19 @@ server:
 eureka:
   instance:
     hostname: localhost
-    preferIpAddress: true
+    appname: discovery-service
+    preferIpAddress: false
   client:
-    healthcheck:
-      enabled: true
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: http://localhost:${server.port}/discovery/eureka/
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+    registrySyncRetries: 3
+    enableSelfPreservation: false
 
 spring:
+  thymeleaf:
+    enabled: false
   cloud:
     config:
       discovery:

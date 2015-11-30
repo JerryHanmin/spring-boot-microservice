@@ -3,4 +3,15 @@ spring:
     name: ribbon-client
   cloud:
     config:
-      uri: http://localhost:29300/config
+      uri: http://localhost:8888/config
+
+server:
+  port: 9001
+
+app:
+  groupName: default-group
+  eureka:
+    hostname: localhost
+    port: 8761
+
+

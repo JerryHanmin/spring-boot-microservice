@@ -31,15 +31,13 @@ public class RibbonClientApp {
 
     @RequestMapping("/")
     public String home() {
-        String str = restTemplate.getForObject("http://oauth2.service/security/oauth/authorize?response_type=code&client_id=androidApp&redirect_uri=code", String.class);
-        System.out.println(str);
         return restTemplate.getForObject("http://ribbon-server", String.class);
     }
 
     @RequestMapping(value = "/choose")
     public String choose() {
-        ServiceInstance instance = loadBalancerClient.choose("ribbon-server");
-        return instance.getHost();
+        ServiceInstance instance = loadBalancerClient.choose("loving-message-service");
+        return instance.getHost()+":"+instance.getPort();
     }
 
     @RequestMapping(value = "/test")

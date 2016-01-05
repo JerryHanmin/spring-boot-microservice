@@ -54,6 +54,7 @@ subprojects{
         compile(
                 "org.springframework.boot:spring-boot-starter-actuator",
                 "org.springframework.boot:spring-boot-starter-web",
+                "org.springframework.cloud:spring-cloud-starter-eureka",
                 "org.springframework.cloud:spring-cloud-starter-config"
         )
         testCompile(

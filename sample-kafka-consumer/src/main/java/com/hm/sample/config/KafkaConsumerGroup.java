@@ -1,7 +1,7 @@
 package com.hm.sample.config;
 
 import kafka.consumer.KafkaStream;
-import kafka.javaapi.consumer.ConsumerConnector;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,27 +11,38 @@ import java.util.concurrent.Executors;
 
 
 public class KafkaConsumerGroup implements Runnable {
-    private ConsumerConnector consumer;
-    private String sampleTopic;
-    private int a_numThreads;
-    private ExecutorService executor;
+    private KafkaConsumerConfiguration kafkaConsumerConfiguration;
 
-    public KafkaConsumerGroup(KafkaConsumerConfiguration kafkaConsumerConfiguration) {
-        this.consumer = kafkaConsumerConfiguration.getConsumerConnector();
-        this.sampleTopic = kafkaConsumerConfiguration.getSampleTopic();
-        this.a_numThreads = kafkaConsumerConfiguration.getNumThreads();
+    private static KafkaConsumerGroup instance = null;
+
+    public static KafkaConsumerGroup getInstance(KafkaConsumerConfiguration kafkaConsumerConfiguration) {
+        if (instance == null) {
+            synchronized (KafkaConsumerGroup.class) {
+                if (instance == null) {
+                    instance = new KafkaConsumerGroup(kafkaConsumerConfiguration);
+                }
+            }
+        }
+        return instance;
+    }
+
+    private KafkaConsumerGroup() {
+    }
+
+    private KafkaConsumerGroup(KafkaConsumerConfiguration kafkaConsumerConfiguration) {
+        this.kafkaConsumerConfiguration = kafkaConsumerConfiguration;
     }
 
     public void run() {
-        Map<String, Integer> topicCountMap = new HashMap<String, Integer>();
-        topicCountMap.put(sampleTopic, new Integer(a_numThreads));
+        Map<String, Integer> topicCountMap = new HashMap<>();
+        topicCountMap.put(kafkaConsumerConfiguration.getSampleTopic(), kafkaConsumerConfiguration.getNumThreads());
 
-        Map<String, List<KafkaStream<byte[], byte[]>>> consumerMap = consumer.createMessageStreams(topicCountMap);
-        List<KafkaStream<byte[], byte[]>> streams = consumerMap.get(sampleTopic);
-        executor = Executors.newFixedThreadPool(a_numThreads);
+        Map<String, List<KafkaStream<byte[], byte[]>>> consumerMap = kafkaConsumerConfiguration.getConsumerConnector().createMessageStreams(topicCountMap);
+        List<KafkaStream<byte[], byte[]>> streams = consumerMap.get(kafkaConsumerConfiguration.getSampleTopic());
+        ExecutorService executor = Executors.newFixedThreadPool(kafkaConsumerConfiguration.getNumThreads());
         int threadNumber = 0;
         for (KafkaStream<byte[], byte[]> stream : streams) {
-            executor.submit(new SampleConsumer(stream, threadNumber));
+            executor.submit(new SampleConsumer(stream, threadNumber,kafkaConsumerConfiguration));
             threadNumber++;
         }
 

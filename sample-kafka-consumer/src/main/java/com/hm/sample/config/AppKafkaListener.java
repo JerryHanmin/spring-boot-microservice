@@ -9,9 +9,15 @@ import org.springframework.stereotype.Component;
 public class AppKafkaListener implements ApplicationListener<ContextRefreshedEvent>{
 	@Autowired
 	private KafkaConsumerConfiguration kafkaConsumerConfiguration;
+
+	private KafkaConsumerGroup kafkaConsumerGroup = null;
+
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
-		new KafkaConsumerGroup(kafkaConsumerConfiguration).run();
+		if(null == kafkaConsumerGroup){
+			kafkaConsumerGroup = KafkaConsumerGroup.getInstance(kafkaConsumerConfiguration);
+			kafkaConsumerGroup.run();
+		}
 	}
 
 }

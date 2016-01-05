@@ -6,8 +6,17 @@ spring:
       uri: http://localhost:8888/config
 server:
   port: 9003
-app:
-  groupName: default-group
+
+#default config
+service:
   eureka:
     hostname: localhost
     port: 8761
+    appGroupName: loving-group
+  zookeeper:
+    hostname: 10.9.42.204
+    port: 2181
+  elasticsearch:
+    hostname: 10.9.42.203
+    port: 9300
+    clusterName: changhongit_dev

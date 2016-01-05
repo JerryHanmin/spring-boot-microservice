@@ -1,4 +1,4 @@
-package com.hm.demo1.controllers;
+package com.hm.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;

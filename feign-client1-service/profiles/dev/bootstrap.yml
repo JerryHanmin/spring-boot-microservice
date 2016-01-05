@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: feign-client1
+  cloud:
+    config:
+      uri: http://localhost:8888/config
+    failFast: true
+server:
+  port: 9008
+app:
+  groupName: default-group
+  eureka:
+    hostname: localhost
+    port: 8761

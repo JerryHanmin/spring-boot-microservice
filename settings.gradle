@@ -14,3 +14,8 @@ include 'sample-kafka-producer'
 include 'sample-company-cassandra'
 include 'sample-company-es'
 
+include 'api-geteway'
+
+include 'feign-client1-service'
+include 'feign-client2-service'
+

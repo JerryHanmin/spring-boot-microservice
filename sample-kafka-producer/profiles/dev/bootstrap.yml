@@ -6,8 +6,13 @@ spring:
       uri: http://localhost:8888/config
 server:
   port: 9002
-app:
-  groupName: default-group
+
+#default config
+service:
   eureka:
     hostname: localhost
     port: 8761
+    appGroupName: loving-group
+  kafka:
+    hostname: 10.9.42.204
+    port: 9092

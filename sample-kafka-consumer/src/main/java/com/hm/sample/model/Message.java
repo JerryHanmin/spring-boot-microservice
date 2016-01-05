@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class Message implements Serializable {
     private String name;
     private String content;
+    private long created_time;
 
     public String getName() {
         return name;
@@ -23,5 +24,13 @@ public class Message implements Serializable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public long getCreated_time() {
+        return created_time;
+    }
+
+    public void setCreated_time(long created_time) {
+        this.created_time = created_time;
     }
 }

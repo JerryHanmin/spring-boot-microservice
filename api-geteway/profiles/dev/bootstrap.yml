@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    config:
+      uri: http://localhost:8888/config
+
+server:
+  port: 9000
+
+app:
+  groupName: default-group
+  eureka:
+    hostname: localhost
+    port: 8761

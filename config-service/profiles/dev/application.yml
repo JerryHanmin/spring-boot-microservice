@@ -27,9 +27,5 @@ spring:
     config:
       server:
         git:
-          uri: http://172.28.4.241/stash/scm/chan/loving-service-config.git
-          username: hanmin
-          password: HAN42728926+min
-          searchPaths: applications,wsapidoc
-
-
+          uri: https://github.com/JerryHanmin/microservice-service-config.git
+          searchPaths: apps_config

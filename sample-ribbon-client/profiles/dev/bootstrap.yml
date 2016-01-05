@@ -9,9 +9,9 @@ server:
   port: 9001
 
 app:
-  groupName: default-group
+  groupName: loving-group
   eureka:
-    hostname: localhost
+    hostname: 10.9.42.203
     port: 8761
 
 

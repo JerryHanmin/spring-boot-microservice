@@ -6,17 +6,21 @@ jar {
 
 dependencies {
     compile(
-            "org.springframework.cloud:spring-cloud-starter-eureka",
-            "org.springframework.cloud:spring-cloud-starter-feign",
-            'com.google.code.gson:gson:2.3.1',
-            'net.sf.json-lib:json-lib:2.4:jdk15',
-            "org.apache.httpcomponents:httpcore:4.4.1",
-            'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+            'org.springframework.data:spring-data-cassandra',
     )
-    compile('org.apache.kafka:kafka_2.10:0.8.2.1'){
-        exclude group :"org.slf4j"
+    compile(
+            'org.apache.httpcomponents:httpclient:4.5.1',
+            'com.google.code.gson:gson:2.3.1',
+            "org.apache.avro:avro:1.7.7",
+            "org.eclipse.jgit:org.eclipse.jgit:4.1.0.201509280440-r",
+            "net.sf.json-lib:json-lib:2.4:jdk15",
+            'dom4j:dom4j:1.6.1'
+    )
+    compile(
+            'org.apache.kafka:kafka_2.10:0.8.2.1'
+    ){
+        exclude group :'org.slf4j'
     }
     testCompile(
-            "org.springframework.boot:spring-boot-starter-test"
     )
 }

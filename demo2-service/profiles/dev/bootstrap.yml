@@ -7,8 +7,8 @@ spring:
     failFast: true
 server:
   port: 9006
-app:
-  groupName: default-group
+service:
   eureka:
     hostname: localhost
     port: 8761
+    appGroupName: default-group

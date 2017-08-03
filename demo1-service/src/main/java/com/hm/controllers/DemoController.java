@@ -8,6 +8,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.InetAddress;
 import java.util.List;
 
 /**
@@ -30,7 +31,7 @@ public class DemoController {
 
     @RequestMapping(value = "findDemo2")
     public String findDemo2() {
-        List<ServiceInstance> list = discoveryClient.getInstances("demo2");
+        List<ServiceInstance> list = discoveryClient.getInstances("apps-demo2");
         String uri = "";
         for (ServiceInstance serviceInstance : list) {
             uri += serviceInstance.getUri();
@@ -53,5 +54,18 @@ public class DemoController {
                 }
         );
 
+    }
+
+    @RequestMapping(value = "/getip")
+    public String getIp() {
+        String ip = "";
+        String hostname = "";
+        try {
+            ip = InetAddress.getLocalHost().getHostAddress();
+            hostname = InetAddress.getLocalHost().getHostName();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ip + "|" + hostname;
     }
 }

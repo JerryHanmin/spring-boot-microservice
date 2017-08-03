@@ -1,0 +1,20 @@
+version = '1.0'
+jar {
+    baseName = 'demo1-service'+"-$profile"
+    version = '0.1.0'
+}
+
+//configurations {
+//    compile.exclude module: "spring-boot-starter-tomcat"
+//}
+dependencies {
+    compile(
+            "org.springframework.cloud:spring-cloud-starter-eureka",
+            "org.springframework.cloud:spring-cloud-starter-hystrix",
+            'com.netflix.hystrix:hystrix-javanica'
+//            "org.springframework.boot:spring-boot-starter-jetty"
+    )
+    testCompile(
+            "org.springframework.boot:spring-boot-starter-test"
+    )
+}

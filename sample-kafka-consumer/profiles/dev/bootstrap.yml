@@ -1,22 +1,15 @@
 spring:
   application:
-    name: kafka-consumer
+    name: sample-kafka
   cloud:
     config:
-      uri: http://localhost:8888/config
+      uri: http://172.28.24.42:19300/config
+    failFast: true
 server:
   port: 9003
 
 #default config
 service:
   eureka:
-    hostname: localhost
+    hostname: 172.28.24.42
     port: 8761
-    appGroupName: loving-group
-  zookeeper:
-    hostname: 10.9.42.204
-    port: 2181
-  elasticsearch:
-    hostname: 10.9.42.203
-    port: 9300
-    clusterName: changhongit_dev

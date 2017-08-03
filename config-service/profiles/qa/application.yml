@@ -5,22 +5,29 @@ server:
 eureka:
   instance:
     hostname: localhost
-    appname: github-config-service
-    virtual-host-name: loving.github.config.service
+    appname: config-service
+    virtualHostName: config-service
+    #appGroupName: default-group
+    preferIpAddress: true
+    virtual-host-name: config-service
     metadataMap:
       instanceId: ${spring.application.name}:${server.port}
   client:
-    registerWithEureka: true
-    fetchRegistry: true
+    region: default
+    registryFetchIntervalSeconds: 5
+    availabilityZones:
+      default: ${APPLICATION_DOMAIN:${DOMAIN:defaultZone}}
+    registerWithEureka: false
+    fetchRegistry: false
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8761/discovery/eureka/
 
 spring:
   cloud:
     config:
       server:
         git:
-          uri: https://github.com/changTtai/loving.git
-          username: changTtai
-          password: changhongIT2015
+          uri: http://sys@192.168.191.58:55002/git/changhongit.git
+          username: sys
+          password: sys
           searchPaths: wsapidoc,applications

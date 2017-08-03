@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: activemq-service
+  cloud:
+    config:
+      uri: http://172.28.24.42:19300/config
+    failFast: true
+server:
+  port: 9003
+
+#default config
+service:
+  eureka:
+    hostname: 172.28.24.42
+    port: 8761

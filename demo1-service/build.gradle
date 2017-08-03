@@ -4,9 +4,13 @@ jar {
     version = '0.1.0'
 }
 
+//configurations {
+//    compile.exclude module: "spring-boot-starter-tomcat"
+//}
 dependencies {
     compile(
             "org.springframework.cloud:spring-cloud-starter-eureka"
+//            "org.springframework.boot:spring-boot-starter-jetty"
     )
     testCompile(
             "org.springframework.boot:spring-boot-starter-test"

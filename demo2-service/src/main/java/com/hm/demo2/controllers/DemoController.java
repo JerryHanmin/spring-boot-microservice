@@ -27,7 +27,7 @@ public class DemoController {
 
     @RequestMapping(value = "/findDemo1")
     public String findDemo1() {
-        List<ServiceInstance> list = discoveryClient.getInstances("demo1");
+        List<ServiceInstance> list = discoveryClient.getInstances("apps-demo1");
         String uri = "";
         for (ServiceInstance serviceInstance : list) {
             uri += serviceInstance.getUri();

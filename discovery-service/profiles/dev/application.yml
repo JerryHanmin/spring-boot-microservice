@@ -4,12 +4,19 @@ server:
 eureka:
   instance:
     hostname: localhost
-    appname: discovery-service
-    preferIpAddress: false
+    appname: ${spring.application.name}
+    preferIpAddress: true
+    virtual-host-name: ${spring.application.name}
+    metadataMap:
+      instanceId: ${spring.application.name}:${server.port}
   client:
-    registerWithEureka: false
+    registerWithEureka: true
     fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://172.28.24.50:8761/discovery/eureka/,http://172.28.24.49:8761/discovery/eureka/,http://172.28.24.48:8761/discovery/eureka/
   server:
+    renewalThresholdUpdateIntervalMs: 10000
+    peerEurekaNodesUpdateIntervalMs: 30000
     waitTimeInMsWhenSyncEmpty: 0
     registrySyncRetries: 3
     enableSelfPreservation: false

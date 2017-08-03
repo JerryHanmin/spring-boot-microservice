@@ -1,0 +1,26 @@
+server:
+  port: 9011
+
+spring:
+  application:
+    name: hystrix-dashboard
+
+eureka:
+  instance:
+    virtualHostName: ${spring.application.name}
+    hostname: localhost
+    appname: ${spring.application.name}
+    #appGroupName: ${service.eureka.appGroupName}  # integration group
+    preferIpAddress: true  #true -> display ip address ; false -> display server name
+    virtual-host-name: ${spring.application.name}
+    metadataMap:
+      instanceId: ${spring.application.name}:${server.port}
+  client:
+    region: default
+    registryFetchIntervalSeconds: 5
+    availabilityZones:
+      default: ${APPLICATION_DOMAIN:${DOMAIN:defaultZone}}
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/discovery/eureka/

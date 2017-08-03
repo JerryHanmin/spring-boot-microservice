@@ -1,15 +1,15 @@
 server:
-  port: 8888
+  port: 19300
   context-path: /config
 
 eureka:
   instance:
     hostname: localhost
-    appname: github-config-service
-    virtualHostName: github-config-service
-    appGroupName: default-group
+    appname: config-service
+    virtualHostName: config-service
+    #appGroupName: default-group
     preferIpAddress: true
-    virtual-host-name: github-config-service
+    virtual-host-name: config-service
     metadataMap:
       instanceId: ${spring.application.name}:${server.port}
   client:
@@ -17,8 +17,8 @@ eureka:
     registryFetchIntervalSeconds: 5
     availabilityZones:
       default: ${APPLICATION_DOMAIN:${DOMAIN:defaultZone}}
-    registerWithEureka: false
-    fetchRegistry: false
+    registerWithEureka: true
+    fetchRegistry: true
     serviceUrl:
       defaultZone: http://localhost:8761/discovery/eureka/
 
@@ -27,5 +27,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/JerryHanmin/microservice-service-config.git
-          searchPaths: apps_config
+          uri: http://lcg@172.28.24.32/tcar.git
+          username: lcg
+          password: lcg
+          searchPaths: applications,avro,wsapidoc

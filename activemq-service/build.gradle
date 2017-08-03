@@ -1,0 +1,16 @@
+version = '1.0'
+jar {
+    baseName = 'activemq-service'+"-$profile"
+    version = '0.1.0'
+}
+
+dependencies {
+    compile(
+            'org.springframework:spring-jms',
+            "org.apache.activemq:activemq-broker",
+            "org.springframework.integration:spring-integration-jms",
+            "org.springframework:spring-oxm",
+    )
+    testCompile(
+    )
+}

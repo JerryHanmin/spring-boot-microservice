@@ -1,0 +1,14 @@
+version = '1.0'
+jar {
+    baseName = 'feign-client2-service'+"-$profile"
+    version = '0.1.0'
+}
+
+dependencies {
+    compile(
+            "org.springframework.cloud:spring-cloud-starter-feign"
+    )
+    testCompile(
+            "org.springframework.boot:spring-boot-starter-test"
+    )
+}

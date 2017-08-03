@@ -1,0 +1,16 @@
+version = '1.0'
+jar {
+    baseName = 'api-geteway'+"-$profile"
+    version = '0.1.0'
+}
+
+dependencies {
+    compile(
+            "org.springframework.cloud:spring-cloud-starter-zuul",
+            "org.springframework.cloud:spring-cloud-starter-eureka",
+            "org.springframework.cloud:spring-cloud-netflix-sidecar"
+    )
+    testCompile(
+            "org.springframework.boot:spring-boot-starter-test"
+    )
+}
